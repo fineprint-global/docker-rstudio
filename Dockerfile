@@ -107,6 +107,17 @@ RUN apt-get update \
     comtradr \
     xlsx \
     captioner \
-    stargazer 
+    stargazer \
+    getPass 
  
+ RUN apt-get update \
+  && apt-get install -y --no-install-recommends \
+    ## Other system util tools  
+    cifs-utils \
+    nfs-common \
+    vim \
+    nano 
+
+
+
 
