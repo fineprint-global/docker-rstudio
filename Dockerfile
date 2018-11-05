@@ -4,6 +4,8 @@ MAINTAINER "Victor Maus" victor.maus@wu.ac.at
 RUN apt-get update \
   && apt-get install -y --no-install-recommends \
     ## Dependencies from rocker/geospatial
+    libxml2 \
+    libxml2-dev \
     lbzip2 \
     libbz2-dev \
     libfftw3-dev \
@@ -45,6 +47,13 @@ RUN apt-get update \
   && R -e "BiocManager::install('rhdf5', ask = FALSE)" \ 
   && install2.r --error \
     ## R packages from rocker/geospatial
+    tidyverse \
+    curl \
+    XML \
+    xml2 \
+    readxl \
+    rio \
+    bookdown \
     RColorBrewer \
     RandomFields \
     RNetCDF \
@@ -116,7 +125,8 @@ RUN apt-get update \
     cifs-utils \
     nfs-common \
     vim \
-    nano 
+    nano \
+    openssh-client
 
 
 
