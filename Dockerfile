@@ -1,4 +1,4 @@
-FROM rocker/rstudio:3.5.1 
+FROM rocker/rstudio:3.5.2 
 MAINTAINER "Victor Maus" victor.maus@wu.ac.at
 
 RUN apt-get update \
