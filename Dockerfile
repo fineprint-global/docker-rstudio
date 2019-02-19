@@ -127,6 +127,7 @@ RUN apt-get update \
     ## Other system util tools  
     cifs-utils \
     nfs-common \
+    curl \
     vim \
     nano \
     openssh-client
