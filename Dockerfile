@@ -125,6 +125,7 @@ RUN apt-get update \
  RUN apt-get update \
   && apt-get install -y --no-install-recommends \
     ## Other system util tools  
+    htop \
     cifs-utils \
     nfs-common \
     curl \
