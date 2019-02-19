@@ -29,6 +29,8 @@ RUN apt-get update \
     tk-dev \
     unixodbc-dev \
     ## Additional dependencies
+    gdal-bin \
+    proj-bin \
     libnlopt-dev \
     libv8-3.14-dev \
     libcairo2-dev \
@@ -117,7 +119,8 @@ RUN apt-get update \
     xlsx \
     captioner \
     stargazer \
-    getPass 
+    getPass \
+    MODIS
  
  RUN apt-get update \
   && apt-get install -y --no-install-recommends \
