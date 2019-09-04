@@ -1,4 +1,4 @@
-FROM rocker/rstudio:3.5.2 
+FROM rocker/rstudio:3.6.1 
 MAINTAINER "Victor Maus" victor.maus@wu.ac.at
 
 RUN apt-get update \
@@ -43,84 +43,84 @@ RUN apt-get update \
     openjdk-8-jdk \
     libpcre3-dev \
   && R CMD javareconf \
-  && install2.r --error \
-    BiocManager \
-    ## from bioconductor
-  && R -e "BiocManager::install('rhdf5', ask = FALSE)" \ 
+  # && install2.r --error \
+  #  BiocManager \
+  #  ## from bioconductor
+  # && R -e "BiocManager::install('rhdf5', ask = FALSE)" \ 
   && install2.r --error \
     ## R packages from rocker/geospatial
     tidyverse \
     curl \
-    XML \
+    # XML \
     xml2 \
-    readxl \
-    rio \
+    # readxl \
+    # rio \
     bookdown \
     RColorBrewer \
-    RandomFields \
-    RNetCDF \
-    classInt \
-    deldir \
-    gstat \
-    hdf5r \
-    lidR \
-    mapdata \
-    maptools \
-    mapview \
-    ncdf4 \
-    proj4 \
+    # RandomFields \
+    # RNetCDF \
+    # classInt \
+    # deldir \
+    # gstat \
+    # hdf5r \
+    # lidR \
+    # mapdata \
+    # maptools \
+    # mapview \
+    # ncdf4 \
+    # proj4 \
     raster \
     rgdal \
     rgeos \
-    rlas \
+    # rlas \
     sf \
     sp \
-    spacetime \
-    spatstat \
-    spdep \
-    geoR \
-    geosphere \
+    # spacetime \
+    # spatstat \
+    # spdep \
+    # geoR \
+    # geosphere \
     ## Additional R packages 
     devtools \
-    roxygen2 \
-    RSelenium \
-    rlist \
-    ggthemes \
-    ggmosaic \
+    # roxygen2 \
+    # RSelenium \
+    # rlist \
+    # ggthemes \
+    # ggmosaic \
     viridis \
-    XLConnect \
+    # XLConnectr \
     ckanr \
-    ggrepel \
-    ggmap \
-    kableExtra \
-    countrycode \
-    gsubfn \
-    rmapshaper \
-    readODS \
-    caret \
-    RWeka \
-    config \
-    dendextend \
-    ensurer \
-    dtw \
-    dtwclust \
-    dtwSat \
+    # ggrepel \
+    # ggmap \
+    # kableExtra \
+    # countrycode \
+    # gsubfn \
+    # rmapshaper \
+    # readODS \
+    # caret \
+    #  RWeka \
+    # config \
+    # dendextend \
+    # ensurer \
+    # dtw \
+    # dtwclust \
+    # dtwSat \
     reticulate \
-    gbm \
+    # gbm \
     keras \
-    kohonen \
-    imputeTS \
-    log4r \
-    openxlsx \
-    ranger \
-    signal \
-    wtss \
-    comtradr \
-    xlsx \
-    captioner \
-    stargazer \
+    # kohonen \
+    # imputeTS \
+    # log4r \
+    # openxlsx \
+    # ranger \
+    # signal \
+    # wtss \
+    # comtradr \
+    # xlsx \
+    # captioner \
+    # stargazer \
     getPass \
-    MODIS
+    # MODIS
  
  RUN apt-get update \
   && apt-get install -y --no-install-recommends \
@@ -132,7 +132,3 @@ RUN apt-get update \
     vim \
     nano \
     openssh-client
-
-
-
-
