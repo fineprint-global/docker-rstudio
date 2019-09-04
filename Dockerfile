@@ -42,6 +42,14 @@ RUN apt-get update \
     openjdk-8-jre \
     openjdk-8-jdk \
     libpcre3-dev \
+    python-gdal \
+    libjq-dev \
+    libprotobuf-dev \
+    libprotoc-dev \
+    protobuf-compiler \
+    r-cran-ncdf4 \
+    libv8-3.14-dev \
+    node.js \
   && R CMD javareconf \
   # && install2.r --error \
   #  BiocManager \
@@ -121,6 +129,9 @@ RUN apt-get update \
     # stargazer \
     getPass \
     # MODIS
+ 
+ RUN curl -sL https://deb.nodesource.com/setup_8.x | sudo bash - \
+  && npm install -g mapshaper
  
  RUN apt-get update \
   && apt-get install -y --no-install-recommends \
