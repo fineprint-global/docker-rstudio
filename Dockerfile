@@ -1,6 +1,12 @@
 FROM rocker/rstudio:3.6.1 
 MAINTAINER "Victor Maus" victor.maus@wu.ac.at
 
+# REMOVE as soon as Debian Buster is used! ---
+# Use buster-repository for libgeos-dev
+RUN echo "deb http://ftp.de.debian.org/debian buster main" > /etc/apt/sources.list.d/backports.list
+RUN printf "# Do not use this\nPackage: *\nPin: release v=10.1\nPin-Priority: 1\n\n# Except for libgeos-dev\nPackage: libgeos-dev\nPin: release v=10.1\nPin-Priority: 500\n\nPackage: libgeos-c1v5\nPin: release v=10.1\nPin-Priority: 500\n" > /etc/apt/preferences.d/9_buster
+# ---
+
 RUN apt-get update \
   && apt-get install -y --no-install-recommends \
     ## Dependencies from rocker/geospatial
@@ -48,14 +54,20 @@ RUN apt-get update \
     libprotoc-dev \
     protobuf-compiler \
     r-cran-ncdf4 \
-    libv8-3.14-dev \
-    node.js \
-  && R CMD javareconf \
-  # && install2.r --error \
-  #  BiocManager \
-  #  ## from bioconductor
-  # && R -e "BiocManager::install('rhdf5', ask = FALSE)" \ 
-  && install2.r --error \
+    libv8-3.14-dev
+
+# This is required for mapshaper, but is huge and fails currently
+# RUN apt-get install -y --no-install-recommends \
+#    nodejs \
+#    npm
+
+# RUN R CMD javareconf \
+#   && install2.r --error \
+#     BiocManager \
+#     ## from bioconductor
+#     && R -e "BiocManager::install('rhdf5', ask = FALSE)"
+
+RUN install2.r --error \
     ## R packages from rocker/geospatial
     tidyverse \
     curl \
@@ -127,11 +139,8 @@ RUN apt-get update \
     # xlsx \
     # captioner \
     # stargazer \
-    getPass \
-    # MODIS
- 
- RUN curl -sL https://deb.nodesource.com/setup_8.x | sudo bash - \
-  && npm install -g mapshaper
+    # MODIS \
+    getPass
  
  RUN apt-get update \
   && apt-get install -y --no-install-recommends \
@@ -143,3 +152,6 @@ RUN apt-get update \
     vim \
     nano \
     openssh-client
+
+# RUN curl -sL https://deb.nodesource.com/setup_8.x | sudo bash - \
+#   && npm install -g mapshaper
