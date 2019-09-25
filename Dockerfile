@@ -56,11 +56,6 @@ RUN apt-get update \
     r-cran-ncdf4 \
     libv8-3.14-dev
 
-# This is required for mapshaper, but is huge and fails currently
-# RUN apt-get install -y --no-install-recommends \
-#    nodejs \
-#    npm
-
 # RUN R CMD javareconf \
 #   && install2.r --error \
 #     BiocManager \
@@ -142,7 +137,7 @@ RUN install2.r --error \
     # MODIS \
     getPass
  
- RUN apt-get update \
+RUN apt-get update \
   && apt-get install -y --no-install-recommends \
     ## Other system util tools  
     htop \
@@ -153,5 +148,7 @@ RUN install2.r --error \
     nano \
     openssh-client
 
-# RUN curl -sL https://deb.nodesource.com/setup_8.x | sudo bash - \
-#   && npm install -g mapshaper
+RUN curl -sL https://deb.nodesource.com/setup_12.x | bash - \
+  && apt-get install -y --no-install-recommends \
+   nodejs \
+  && npm install -g mapshaper
