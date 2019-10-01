@@ -10,6 +10,7 @@ RUN printf "# Do not use this\nPackage: *\nPin: release v=10.1\nPin-Priority: 1\
 RUN apt-get update \
   && apt-get install -y --no-install-recommends \
     ## Dependencies from rocker/geospatial
+    libmagick++-dev \
     libxml2 \
     libxml2-dev \
     lbzip2 \
